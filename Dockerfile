@@ -13,4 +13,4 @@ ENV HOST=
 ENV API_KEY=
 ENV API_SECRET=
 
-CMD [ "python3", "main.py"]
+CMD [ "python3", "-u", "main.py"]
