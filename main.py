@@ -49,6 +49,9 @@ def updateDnsIp(ip):
     if res.ok:
         print(
             f"Successfully changed dns record, new dns record: {ip}", flush=True)
+    else:
+        print(
+            f"Something went wrong changing dns record", flush=True)
 
 
 def job():
