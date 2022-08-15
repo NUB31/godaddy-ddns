@@ -1,0 +1,10 @@
+version: "3"
+services:
+  ddns:
+    image: "nub31/godaddy_ddns"
+    restart: unless-stopped
+    environment:
+      - DOMAIN=ostepop.site
+      - HOST=@
+      - API_KEY=your_godaddy_api_key
+      - API_SECRET=your_godaddy_api_secret
