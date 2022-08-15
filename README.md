@@ -9,9 +9,19 @@
   docker run -e DOMAIN=example.com -e HOST=your_host -e API_KEY=your_godaddy_api_key -e API_SECRET=your_godaddy_api_secret  nub31/godaddy_ddns
   ```
   * ### docker-compose:
+  ```yaml
+  version: "3"
+  services:
+    ddns:
+      image: "nub31/godaddy_ddns"
+      restart: unless-stopped
+      environment:
+        - DOMAIN=example.com
+        - HOST=@
+        - API_KEY=your_godaddy_api_key
+        - API_SECRET=your_godaddy_api_secret
   ```
-  TODO
-  ```
+
 * ## python
   Change the env variables to your values.
   Then run:
