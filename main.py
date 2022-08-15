@@ -3,9 +3,6 @@ import time
 
 import requests
 import schedule
-from dotenv import load_dotenv
-
-load_dotenv()
 
 domain = os.getenv('DOMAIN')
 host = os.getenv('HOST')
@@ -26,7 +23,12 @@ def getWanIp():
 def getDnsIp():
     res = requests.get(f"https://api.godaddy.com/v1/domains/{domain}/records/A/{host}", headers={
                        "Authorization": f"sso-key {APIKey}:{APISecret}"})
-    ip = res.json()[0]["data"]
+    if res.json()[0]["data"]:
+        ip = res.json()[0]["data"]
+    else:
+        raise Exception(
+            f"No matching DNS records on domain: {domain} and host: {host}")
+
     print(f"fetching dns ip, result: {ip}")
     return ip
 
@@ -53,8 +55,6 @@ def job():
     else:
         print("Found matching ips, no changes necessary")
 
-
-job()
 
 schedule.every(10).minutes.do(job)
 
