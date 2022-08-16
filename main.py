@@ -66,6 +66,8 @@ def job():
         print("Found matching ips, no changes necessary", flush=True)
 
 
+job()
+
 schedule.every(10).minutes.do(job)
 
 while True:
